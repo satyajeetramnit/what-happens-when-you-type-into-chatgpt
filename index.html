@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="keywords" content="ChatGPT, documentation, AI pipeline, end-to-end process, ChatGPT internals">
+  <meta name="description" content="What Happens When You Type into ChatGPT? – A comprehensive documentation exploring the entire pipeline from keystrokes to response rendering.">
+  <title>What Happens When You Type into ChatGPT?</title>
+  
+  <!-- Docsify Default Theme (Light Mode) -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+  <!-- Dark-Light Theme Plugin CSS -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css" title="docsify-darklight-theme" type="text/css">
+  <!-- Prism syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css">
+  
+</head>
+<body>
+  <div id="app">Loading...</div>
+  
+  <script>
+    // Read URL parameter to set the theme if provided, e.g., ?theme=dark
+    const params = new URLSearchParams(window.location.search);
+    const urlTheme = params.get('theme');
+    if (urlTheme === 'dark' || urlTheme === 'light') {
+      localStorage.setItem('DARK_LIGHT_THEME', urlTheme);
+    }
+    
+    // Docsify configuration
+    window.$docsify = {
+      name: 'What Happens When You Type into ChatGPT?',
+      repo: 'https://satyajeetramnit.github.io/what-happens-when-you-type-into-chatgpt/',
+      loadSidebar: true,
+      subMaxLevel: 2,
+      autoHeader: false,
+      coverpage: false,
+      executeScript: true,
+      search: {
+        maxAge: 86400000,
+        noData: {
+          '/': 'No results found!'
+        },
+        paths: 'auto',
+        placeholder: 'Search topics...'
+      },
+      plugins: [
+        function(hook) {
+          var footer = [
+            '<footer style="text-align: center; margin-top: 50px;">',
+            '<span>What Happens When You Type into ChatGPT? &copy; 2025</span>',
+            '</footer>'
+          ].join('');
+          hook.afterEach(function(html) {
+            return html + footer;
+          });
+        }
+      ],
+      darklightTheme: {
+        defaultTheme: 'dark',  // Change to 'light' to default to light mode
+        siteFont: 'Arial',
+        bodyFontSize: '16px',
+        dark: {
+          background: '#181818',
+          textColor: '#ffffff',
+          toggleText: '🌙 Dark Mode'
+        },
+        light: {
+          background: '#ffffff',
+          textColor: '#333333',
+          toggleText: '☀️ Light Mode'
+        }
+      }
+    };
+  </script>
+  
+  <!-- Load Docsify Core -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <!-- Load Sidebar Collapse Plugin (if needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <!-- Load Search Plugin -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <!-- Finally, load the Dark-Light Theme Plugin AFTER the core scripts -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js" type="text/javascript"></script>
+</body>
+</html>
